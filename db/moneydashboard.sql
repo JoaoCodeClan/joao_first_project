@@ -10,7 +10,7 @@ CREATE TABLE merchants(
 
 CREATE TABLE tags(
   id SERIAL8 PRIMARY KEY,
-  type_of_buy VARCHAR(255)
+  type_of_purchase VARCHAR(255)
 );
 
 CREATE TABLE transactions(

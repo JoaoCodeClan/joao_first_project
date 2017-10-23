@@ -1,18 +1,18 @@
 class Tag
 
   attr_reader(:id)
-  attr_accessor(:type_of_buy)
+  attr_accessor(:type_of_purchase)
 
   def initialize(tag)
     @id= tag['id'].to_i if tag['id']
-    @type_of_buy = tag['type_of_buy']
+    @type_of_purchase = tag['type_of_purchase']
 
   end
 
 
   def save()
-    sql = " INSERT INTO tags(type_of_buy) VALUES($1) RETURNING id"
-    values = [@type_of_buy]
+    sql = " INSERT INTO tags(type_of_purchase) VALUES($1) RETURNING id"
+    values = [@type_of_purchase]
 
     tag = SqlRunner.run(sql,values)
 
@@ -54,8 +54,8 @@ class Tag
   end
 
   def update()
-    sql = " UPDATE tags set(type_of_buy)=($1) WHERE id = $2"
-    values = [@amount, @date, @merchant_id, @tag_id, @id]
+    sql = " UPDATE tags set(type_of_purchase)=($1) WHERE id = $2"
+    values = [@type_of_purchase, @id]
 
     SqlRunner.run(sql,values)
 

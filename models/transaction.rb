@@ -62,4 +62,13 @@ class Transaction
 
   end
 
+  def self.total_spent()
+ sql = "SELECT amount FROM transactions"
+ values = []
+SqlRunner.run(sql,values)
+ 
+  end
+
+
+
 end
