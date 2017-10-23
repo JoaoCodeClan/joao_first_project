@@ -82,6 +82,16 @@ class Transaction
 
   end
 
+  def self.transactions_by_merchant_id(merchant_id)
+    sql = "SELECT * FROM transactions where merchant_id= $1 "
+    values = [merchant_id]
+
+    result_array = SqlRunner.run(sql,values)
+
+    return result_array.map {|transaction| Transaction.new(transaction)}
+
+  end
+
 
 
 
