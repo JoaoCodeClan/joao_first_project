@@ -63,13 +63,13 @@ class Transaction
   end
 
   def self.total_spent()
- sql = "SELECT SUM(amount) FROM transactions"
- values = []
- result = SqlRunner.run(sql,values)
+    sql = "SELECT SUM(amount) FROM transactions"
+    values = []
+    result = SqlRunner.run(sql,values)
 
- # sum = 0
-  total_array = result.first['sum'].to_f
- #  return total.to_i
+
+    total_array = result.first['sum'].to_f
+
   end
 
 

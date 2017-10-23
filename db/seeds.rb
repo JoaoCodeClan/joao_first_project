@@ -30,7 +30,7 @@ tag3.save()
 tag4.save()
 
 transaction1 = Transaction.new({'amount'=> '100', 'date'=> '20/02/2017','merchant_id'=> merchant1.id, 'tag_id'=> tag1.id })
-transaction2 = Transaction.new({'amount'=> '50', 'date'=> '23/02/2017','merchant_id'=> merchant2.id, 'tag_id'=> tag2.id })
+transaction2 = Transaction.new({'amount'=> '50', 'date'=> '23/02/2017','merchant_id'=> merchant2.id, 'tag_id'=> tag1.id })
 transaction3 = Transaction.new({'amount'=> '20', 'date'=> '23/02/2017','merchant_id'=> merchant3.id, 'tag_id'=> tag3.id })
 transaction4 = Transaction.new({'amount'=> '40', 'date'=> '24/02/2017','merchant_id'=> merchant4.id, 'tag_id'=> tag4.id })
 

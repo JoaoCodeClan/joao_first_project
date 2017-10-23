@@ -61,4 +61,18 @@ class Tag
 
   end
 
+  def spent()
+
+  sql = "SELECT SUM(amount) FROM transactions INNER JOIN tags ON tags.id = transactions.tag_id
+      WHERE tags.id = $1"
+      values = [@id]
+      results_array = SqlRunner.run(sql,values)
+
+      return results_array.first['sum'].to_f
+      # sum = 0
+
+      # total = results_array.each {|value| sum += value}
+
+  end
+
 end
