@@ -1,4 +1,4 @@
-class tag
+class Tag
 
   attr_reader(:id)
   attr_accessor(:type_of_buy)
@@ -30,7 +30,7 @@ class tag
   end
 
   def delete()
-    sql = " DELETE * FROM tags WHERE id= $1"
+    sql = " DELETE  FROM tags WHERE id= $1"
     values = [@id]
 
     SqlRunner.run(sql,values)
@@ -38,10 +38,19 @@ class tag
 
 
   def self.delete_all()
-    sql = " DELETE * FROM tags"
+    sql = " DELETE FROM tags"
     values = []
 
     SqlRunner.run(sql,values)
+  end
+
+  def self.find(id)
+    sql = " SELECT * FROM tags WHERE id=$1"
+    values = [id]
+
+    tag_result = SqlRunner.run(sql,values)
+
+    return Tag.new(tag_result.first)
   end
 
 

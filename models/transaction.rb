@@ -8,7 +8,7 @@ attr_accessor(:amount, :date, :merchant_id, :tag_id)
     @amount = transaction['amount'].to_i
     @date = transaction['date']
     @merchant_id = transaction['merchant_id'].to_i
-    @tag_id = transsaction['tag_id'].to_i
+    @tag_id = transaction['tag_id'].to_i
   end
 
   def save()
@@ -17,7 +17,7 @@ attr_accessor(:amount, :date, :merchant_id, :tag_id)
 
     transaction = SqlRunner.run(sql,values)
 
-    @id = tag.first['id'].to_i
+    @id = transaction.first['id'].to_i
 
   end
 
@@ -31,7 +31,7 @@ attr_accessor(:amount, :date, :merchant_id, :tag_id)
   end
 
   def delete()
-    sql = " DELETE * FROM transactions WHERE id= $1"
+    sql = " DELETE  FROM transactions WHERE id= $1"
     values = [@id]
 
     SqlRunner.run(sql,values)
@@ -39,10 +39,19 @@ attr_accessor(:amount, :date, :merchant_id, :tag_id)
 
 
   def self.delete_all()
-    sql = " DELETE * FROM transactions"
+    sql = " DELETE FROM transactions"
     values = []
 
     SqlRunner.run(sql,values)
+  end
+
+  def self.find(id)
+    sql = " SELECT * FROM transactions WHERE id=$1"
+    values = [id]
+
+    transaction_result = SqlRunner.run(sql,values)
+
+    return Transaction.new(transaction_result.first)
   end
 
 end
