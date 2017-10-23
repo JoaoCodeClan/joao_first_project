@@ -12,6 +12,7 @@ CREATE TABLE tags(
   id SERIAL8 PRIMARY KEY,
   type_of_buy VARCHAR(255)
 );
+
 CREATE TABLE transactions(
   id SERIAL8 PRIMARY KEY,
   amount INT4,

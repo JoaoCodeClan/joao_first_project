@@ -1,7 +1,7 @@
 class Transaction
 
-attr_reader(:id)
-attr_accessor(:amount, :date, :merchant_id, :tag_id)
+  attr_reader(:id)
+  attr_accessor(:amount, :date, :merchant_id, :tag_id)
 
   def initialize(transaction)
     @id = transaction['id'].to_i if transaction['id']
@@ -52,6 +52,14 @@ attr_accessor(:amount, :date, :merchant_id, :tag_id)
     transaction_result = SqlRunner.run(sql,values)
 
     return Transaction.new(transaction_result.first)
+  end
+
+  def update()
+    sql = " UPDATE transactions set(amount, date, merchant_id, tag_id)=($1, $2, $3, $4) WHERE id = $5"
+    values = [@amount, @date, @merchant_id, @tag_id, @id]
+
+    SqlRunner.run(sql,values)
+
   end
 
 end

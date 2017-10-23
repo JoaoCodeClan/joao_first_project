@@ -53,5 +53,12 @@ class Tag
     return Tag.new(tag_result.first)
   end
 
+  def update()
+    sql = " UPDATE tags set(type_of_buy)=($1) WHERE id = $2"
+    values = [@amount, @date, @merchant_id, @tag_id, @id]
+
+    SqlRunner.run(sql,values)
+
+  end
 
 end
