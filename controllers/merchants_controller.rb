@@ -1,5 +1,5 @@
 require('sinatra')
-require('sintra/contrib/all')
+require('sinatra/contrib/all')
 require('pry')
 require_relative('../models/merchant.rb')
 require_relative('../models/transaction.rb')
