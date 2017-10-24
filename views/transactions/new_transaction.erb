@@ -1,0 +1,35 @@
+<h1> Create your new transaction below:</h1>
+
+<br></br>
+
+<form method="post" action="/transactions/all">
+  <label for="amount">Amount Spent </label>
+  <input id="amount" type="number" name="amount"/>
+
+<br></br>
+
+  <label for="date">Date of transaction </label>
+  <input id="date" type="date" name="date_of_transaction"/>
+
+<br></br>
+
+  <label> Select a merchant </label>
+  <select name ="merchant_id" >
+    <% for merchant in @merchants %>
+      <option value="<%= merchant.id %>"> <%= merchant.name%> </option>
+    <% end %>
+  </select>
+
+<br></br>
+
+    <label> Select a type of purchase </label>
+    <select name ="tag_id" >
+      <% for tag in @tags %>
+      <option value=" <%= tag.id %>"> <%= tag.type_of_purchase%> </option>
+        <% end %>
+    </select>
+
+<br></br>
+        <input type="submit" value="Record your transaction"/>
+
+</form>

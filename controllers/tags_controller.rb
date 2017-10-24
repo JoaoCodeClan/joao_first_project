@@ -18,8 +18,22 @@ get '/tags/new' do
   erb(:"tags/new_tag")
 end
 
-post '/tag/all' do
+post '/tags/all' do
   @tag = Tag.new(params)
   @tag.save()
   erb(:"tags/new_tag_report")
+end
+
+get '/tags/spent_by_tag' do
+  @tags = Tag.all
+  # @amount = params.spent()
+  erb(:"tags/spent_by_tag")
+end
+
+get '/tags/tag_total' do
+  @tag = Tag.find(params['tag_id'])
+  @amount = @tag.spent()
+
+  erb(:"tags/tag_total")
+
 end

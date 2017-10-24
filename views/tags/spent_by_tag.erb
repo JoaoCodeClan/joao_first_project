@@ -1,0 +1,17 @@
+<h1> Check your spendings </h1>
+
+<br></br>
+
+<form method="get" action="/tags/tag_total">
+
+    <label> Select a type of purchase </label>
+    <select name ="tag_id" >
+      <% for tag in @tags %>
+      <option value=" <%= tag.id %>"> <%= tag.type_of_purchase%> </option>
+        <% end %>
+    </select>
+
+
+    <input type="submit" value="Check your spendings"/>
+
+    </form>

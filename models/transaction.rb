@@ -1,19 +1,19 @@
 class Transaction
 
   attr_reader(:id)
-  attr_accessor(:amount, :date, :merchant_id, :tag_id)
+  attr_accessor(:amount, :date_of_transaction, :merchant_id, :tag_id)
 
   def initialize(transaction)
     @id = transaction['id'].to_i if transaction['id']
     @amount = transaction['amount'].to_i
-    @date = transaction['date']
+    @date_of_transaction = transaction['date_of_transaction']
     @merchant_id = transaction['merchant_id'].to_i
     @tag_id = transaction['tag_id'].to_i
   end
 
   def save()
-    sql = " INSERT INTO transactions(amount, date, merchant_id, tag_id) VALUES($1, $2, $3, $4) RETURNING id"
-    values = [@amount, @date, @merchant_id, @tag_id]
+    sql = " INSERT INTO transactions(amount, date_of_transaction, merchant_id, tag_id) VALUES($1, $2, $3, $4) RETURNING id"
+    values = [@amount, @date_of_transaction, @merchant_id, @tag_id]
 
     transaction = SqlRunner.run(sql,values)
 
@@ -37,6 +37,20 @@ class Transaction
     SqlRunner.run(sql,values)
   end
 
+  def merchant()
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [@merchant_id]
+    results = SqlRunner.run(sql,values)
+    return Merchant.new(results.first).name()
+  end
+
+  def tag()
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [@tag_id]
+    results = SqlRunner.run(sql,values)
+    return Tag.new(results.first).type_of_purchase()
+  end
+
 
   def self.delete_all()
     sql = " DELETE FROM transactions"
@@ -55,8 +69,8 @@ class Transaction
   end
 
   def update()
-    sql = " UPDATE transactions set(amount, date, merchant_id, tag_id)=($1, $2, $3, $4) WHERE id = $5"
-    values = [@amount, @date, @merchant_id, @tag_id, @id]
+    sql = " UPDATE transactions set(amount, date_of_transaction, merchant_id, tag_id)=($1, $2, $3, $4) WHERE id = $5"
+    values = [@amount, @date_of_transaction, @merchant_id, @tag_id, @id]
 
     SqlRunner.run(sql,values)
 

@@ -1,0 +1,22 @@
+<h1> These are all your transactions</h1>
+
+<p class="new_bttn">
+  <a href="/transactions/new"> Create a new transaction </a>
+</p>
+
+<br></br>
+
+<p>
+  <ul>
+    <% @transactions.each_with_index do |transaction, index| %>
+    <h4>Transaction <%= index+1 %></h4>
+    <li> Amount: <%= transaction.amount() %></li>
+    <li> Date of transaction: <%= transaction.date_of_transaction() %> </li>
+    <li> Merchant: <%= transaction.merchant() %> </li>
+    <li> Type of purchase: <%= transaction.tag() %> </li>
+
+<br></br>
+    <% end %>
+
+  </ul>
+</p>
