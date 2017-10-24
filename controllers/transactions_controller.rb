@@ -21,8 +21,15 @@ get '/transactions/new' do
   erb(:"transactions/new_transaction")
 end
 
-post '/transactions/all' do
+post '/transactions/new_transaction_report' do
   @transaction = Transaction.new(params)
   @transaction.save()
   erb(:"transactions/new_transaction_report")
 end
+
+
+
+# post '/new_transaction_report' do
+#   @transaction = Transaction.new(params)
+# erb(:"/new_transaction_report")
+# end
