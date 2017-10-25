@@ -1,0 +1,35 @@
+<h1> Change your transaction below:</h1>
+
+<br></br>
+
+<form method="post" action="/transactions/<%= @transaction.id %>/transaction_edit_report">
+  <label for="amount">Amount Spent </label>
+  <input id="amount" type="number" name="amount" value="<%= @transaction.amount%>"/>
+
+<br></br>
+
+  <label for="date">Date of transaction </label>
+  <input id="date" type="date" name="date_of_transaction" value="<%= @transaction.date_of_transaction %>"/>
+
+<br></br>
+
+  <label> Select a merchant </label>
+  <select name ="merchant_id" >
+    <% for merchant in @merchants %>
+      <option <%= "selected" if merchant.id == @transaction.merchant_id %> value="<%= merchant.id %>"> <%= merchant.name%> </option>
+    <% end %>
+  </select>
+
+<br></br>
+
+    <label> Select a type of purchase </label>
+    <select name ="tag_id" >
+      <% for tag in @tags %>
+      <option <%= "selected" if tag.id == @transaction.tag_id%> value=" <%= tag.id %>"> <%= tag.type_of_purchase%> </option>
+        <% end %>
+    </select>
+
+<br></br>
+        <input type="submit" value="Update your transaction"/>
+
+</form>

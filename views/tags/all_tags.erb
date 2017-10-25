@@ -1,0 +1,25 @@
+<p class="new_bttn">
+  <a href="/tags/new_tag"> Create a new tag </a>
+</p>
+
+<br></br>
+
+<p>
+  <ul>
+    <% @tags.each_with_index do |tag, index| %>
+    <h4>Tag <%= index+1 %></h4>
+    <li> Type of purchase: <%= tag.type_of_purchase() %></li>
+
+<br></br>
+
+<form method="post" action = "/tags/<%= tag.id%>/delete_tag">
+<input type="submit"  value="Delete this type of purchase"/>
+</form>
+<form method="get" action ="/tags/<%= tag.id %>/tag_edit_form">
+<input type="submit"  value="Change this type of purchase"/>
+</form>
+    <% end %>
+
+  </ul>
+
+</p>

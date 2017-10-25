@@ -65,6 +65,16 @@ class Merchant
 
   end
 
-  
+  def spent()
+
+  sql = "SELECT SUM(amount) FROM transactions INNER JOIN merchants ON merchants.id = transactions.merchant_id
+      WHERE merchants.id = $1"
+      values = [@id]
+      results_array = SqlRunner.run(sql,values)
+
+      return results_array.first['sum'].to_f
+
+  end
+
 
 end

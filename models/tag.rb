@@ -69,9 +69,6 @@ class Tag
       results_array = SqlRunner.run(sql,values)
 
       return results_array.first['sum'].to_f
-      # sum = 0
-
-      # total = results_array.each {|value| sum += value}
 
   end
 

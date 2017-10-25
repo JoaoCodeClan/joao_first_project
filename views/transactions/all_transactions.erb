@@ -19,7 +19,7 @@
 <form method="post" action = "/transactions/<%= transaction.id%>/delete_transaction">
 <input type="submit"  value="Delete this transaction"/>
 </form>
-<form method="get" action ="/transactions/all_transactions/edit">
+<form method="get" action ="/transactions/<%= transaction.id %>/transaction_edit_form">
 <input type="submit"  value="Change  this transaction"/>
 </form>
     <% end %>
