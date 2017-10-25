@@ -5,7 +5,7 @@ require_relative('merchant.rb')
 class Transaction
 
   attr_reader(:id)
-  attr_accessor(:amount, :date_of_transaction, :merchant_id, :tag_id)
+  attr_accessor(:amount, :date_of_transaction, :merchant_id, :tag_id, :budget_id)
 
   def initialize(transaction)
     @id = transaction['id'].to_i if transaction['id']
@@ -13,11 +13,12 @@ class Transaction
     @date_of_transaction = transaction['date_of_transaction']
     @merchant_id = transaction['merchant_id'].to_i
     @tag_id = transaction['tag_id'].to_i
+    @budget_id = transaction['budget_id'].to_i
   end
 
   def save()
-    sql = " INSERT INTO transactions(amount, date_of_transaction, merchant_id, tag_id) VALUES($1, $2, $3, $4) RETURNING id"
-    values = [@amount, @date_of_transaction, @merchant_id, @tag_id]
+    sql = " INSERT INTO transactions(amount, date_of_transaction, merchant_id, tag_id, budget_id) VALUES($1, $2, $3, $4, $5) RETURNING id"
+    values = [@amount, @date_of_transaction, @merchant_id, @tag_id, @budget_id]
 
     transaction = SqlRunner.run(sql,values)
 
@@ -73,8 +74,8 @@ class Transaction
   end
 
   def update()
-    sql = " UPDATE transactions set(amount, date_of_transaction, merchant_id, tag_id)=($1, $2, $3, $4) WHERE id = $5"
-    values = [@amount, @date_of_transaction, @merchant_id, @tag_id, @id]
+    sql = " UPDATE transactions set(amount, date_of_transaction, merchant_id, tag_id, budget_id)=($1, $2, $3, $4, $5) WHERE id = $6"
+    values = [@amount, @date_of_transaction, @merchant_id, @tag_id,@budget_id, @id]
 
     SqlRunner.run(sql,values)
 
@@ -110,12 +111,22 @@ class Transaction
 
   end
 
-  def self.amount_left()
-    budget = Budget.budget.to_f
-    spent = 2
-    total = budget*spent
-    return total.to_f
+  def budget()
+    sql = "SELECT * FROM budgets WHERE id = $1"
+    values = [@budget_id]
+    results = SqlRunner.run(sql,values)
+    return Budget.new(results.first).budget()
   end
 
+  # def self.month_expenses(month)
+  #   # sql = "SELECT SUM(amount) FROM transactions WHERE MONTHNAME()= $1  "
+  #   sql = "{ fn MONTHNAME(OrderDate) } AS MonthName, YEAR(OrderDate) AS Year, SUM(amount)
+  #   FROM transactions
+  #   values = [month]
+  #   results_array = SqlRunner.run(sql,values)
+  #
+  #   return results_array.first['sum'].to_f
+  #
+  # end
 
 end

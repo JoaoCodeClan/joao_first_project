@@ -18,6 +18,7 @@ end
 get '/transactions/new' do
   @merchants = Merchant.all()
   @tags = Tag.all()
+  @budgets = Budget.all()
   erb(:"transactions/new_transaction")
 end
 
@@ -38,6 +39,7 @@ get '/transactions/:id/transaction_edit_form' do
   @transaction = Transaction.find(params[:id])
   @merchants = Merchant.all()
   @tags = Tag.all()
+  @budgets = Budget.all()
 erb(:"transactions/transaction_edit_form")
 end
 

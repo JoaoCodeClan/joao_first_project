@@ -3,7 +3,13 @@
 <br></br>
 
 <section id="display">
-   <p id = "display_para"> Your total spent so far is : £<%= @amount_spent %>
+   <p id = "display_para"> Your total spent so far is : £<%= @transaction %>
    <p id = "display_para"> You have available : £<%= @amount_left %>
-   <!-- <p id = "display_para"> Your monthly budget is : £<%= @budget %> -->
+   <p id = "display_para"> Your monthly budget is : £<%= @budget %>
+</section>
+
+<section id="warning">
+  <% if  @amount_left < (0.2 * @budget)%>
+<p id="bad"> Your expenses are too high</p>
+<% end%>
 </section>

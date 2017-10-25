@@ -30,6 +30,14 @@
     </select>
 
 <br></br>
+   <label> Select budget </label>
+   <select name ="budget_id" >
+      <% for budget in @budgets %>
+   <option <%= "selected" if budget.id == @transaction.budget_id%> value=" <%= budget.id %>"> <%= budget.budget%> </option>
+    <% end %>
+    </select>
+
+<br></br>
         <input type="submit" value="Update your transaction"/>
 
 </form>

@@ -30,6 +30,15 @@
     </select>
 
 <br></br>
+
+    <label> Select the budget </label>
+    <select name ="budget_id" >
+      <% for budget in @budgets %>
+    <option value=" <%= budget.id %>"> <%= budget.budget%> </option>
+        <% end %>
+    </select>
+
+<br></br>
         <input type="submit" value="Record your transaction"/>
 
 </form>

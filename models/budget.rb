@@ -4,10 +4,12 @@ class Budget
 
 
   attr_accessor(:budget)
+  attr_reader (:id)
 
   def initialize(monthly_budget)
     @id= monthly_budget['id'].to_i if monthly_budget['id']
     @budget= monthly_budget['budget'].to_i
+    
   end
 
   def save()
@@ -17,6 +19,15 @@ class Budget
     budget = SqlRunner.run(sql,values)
 
     @id = budget.first['id'].to_i
+
+  end
+
+  def self.all()
+    sql = "SELECT * FROM budgets"
+    values = []
+    budgets = SqlRunner.run(sql,values)
+
+    return budgets.map {|budget| Budget.new(budget)}
 
   end
 
@@ -42,7 +53,5 @@ class Budget
     SqlRunner.run(sql,values)
   end
 
- def self.budget()
-return @budget.to_f
- end
+
 end

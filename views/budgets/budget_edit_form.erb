@@ -1,0 +1,19 @@
+<h1> Change your budget for the current month:</h1>
+
+<br></br>
+
+<form method="post" action="/budgets/budget_edit_report">
+  <select hidden name="id" />
+  <% for budget in @budgets %>
+    <option value="<%= budget.id  %>"> <%= budget.budget %> </option>
+  <% end %>
+</select>
+  <label for="budget">Budget </label>
+  <input id="budget" type="number" name="budget"/>
+
+<br></br>
+
+
+        <input type="submit" value="Change budget"/>
+
+</form>
