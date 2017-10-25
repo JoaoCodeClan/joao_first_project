@@ -27,9 +27,9 @@ post '/transactions/new_transaction_report' do
   erb(:"transactions/new_transaction_report")
 end
 
-
-
-# post '/new_transaction_report' do
-#   @transaction = Transaction.new(params)
-# erb(:"/new_transaction_report")
-# end
+post '/transactions/:id/delete_transaction' do
+@transaction = Transaction.find(params[:id])
+@transaction.delete
+  # erb(:"transactions/delete_transaction")
+  redirect "/transactions/all_transactions"
+end

@@ -16,7 +16,14 @@
     <li> Type of purchase: <%= transaction.tag() %> </li>
 
 <br></br>
+<form method="post" action = "/transactions/<%= transaction.id%>/delete_transaction">
+<input type="submit"  value="Delete this transaction"/>
+</form>
+<form method="get" action ="/transactions/all_transactions/edit">
+<input type="submit"  value="Change  this transaction"/>
+</form>
     <% end %>
 
   </ul>
+
 </p>

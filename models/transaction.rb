@@ -1,3 +1,7 @@
+require_relative('budget.rb')
+require_relative('tag.rb')
+require_relative('merchant.rb')
+
 class Transaction
 
   attr_reader(:id)
@@ -87,12 +91,12 @@ class Transaction
   end
 
   def self.transactions_by_tag_id(tag_id)
-  sql = "SELECT * FROM transactions where tag_id= $1 "
-  values = [tag_id]
+    sql = "SELECT * FROM transactions where tag_id= $1 "
+    values = [tag_id]
 
-  result_array = SqlRunner.run(sql,values)
+    result_array = SqlRunner.run(sql,values)
 
-   return result_array.map {|transaction| Transaction.new(transaction)}
+    return result_array.map {|transaction| Transaction.new(transaction)}
 
   end
 
@@ -106,7 +110,12 @@ class Transaction
 
   end
 
-
+  def self.amount_left()
+    budget = Budget.budget.to_f
+    spent = 2
+    total = budget*spent
+    return total.to_f
+  end
 
 
 end

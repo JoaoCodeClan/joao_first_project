@@ -2,12 +2,15 @@ require("pry")
 require_relative("../models/merchant.rb")
 require_relative("../models/tag.rb")
 require_relative("../models/transaction.rb")
+require_relative('../models/budget.rb')
 
 Transaction.delete_all
 Merchant.delete_all()
 Tag.delete_all()
+Budget.delete_all()
 
-
+budget1 = Budget.new({'budget'=> 1000})
+budget1.save()
 
 merchant1 = Merchant.new({'name'=>'Zara'})
 merchant2 = Merchant.new({'name'=>'Tesco'})

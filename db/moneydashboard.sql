@@ -1,7 +1,13 @@
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS merchants;
+DROP TABLE IF EXISTS budgets;
 
+
+CREATE TABLE budgets(
+  id SERIAL8 PRIMARY KEY,
+  budget INT8
+);
 
 CREATE TABLE merchants(
   id SERIAL8 PRIMARY KEY,
