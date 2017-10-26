@@ -15,14 +15,13 @@
     <li> Merchant: <%= transaction.merchant() %> </li>
     <li> Type of purchase: <%= transaction.tag() %> </li>
 
-<form method="post" action = "/transactions/<%= transaction.id%>/delete_transaction">
-<input class = "bttn_delete" type="submit"  value="Delete this transaction"/>
-</form>
-<form method="get" action ="/transactions/<%= transaction.id %>/transaction_edit_form">
-<input class = "bttn_edit" type="submit"  value="Change  this transaction"/>
-</form>
+    <form method="post" action = "/transactions/<%= transaction.id%>/delete_transaction">
+      <input class = "bttn_delete" type="submit"  value="Delete this transaction"/>
+    </form>
+    <form method="get" action ="/transactions/<%= transaction.id %>/transaction_edit_form">
+      <input class = "bttn_edit" type="submit"  value="Change  this transaction"/>
+    </form>
     <% end %>
-
   </ul>
 
 </p>

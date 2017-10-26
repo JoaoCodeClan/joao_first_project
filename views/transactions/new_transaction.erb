@@ -6,39 +6,28 @@
   <label for="amount">Amount Spent </label>
   <input id="amount" type="number" name="amount"/>
 
-
-
   <label for="date">Date of transaction </label>
   <input id="date" type="date" name="date_of_transaction"/>
-
-
 
   <label> Select a merchant </label>
   <select name ="merchant_id" >
     <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"> <%= merchant.name%> </option>
+    <option value="<%= merchant.id %>"> <%= merchant.name%> </option>
     <% end %>
   </select>
 
+  <label> Select a type of purchase </label>
+  <select name ="tag_id" >
+    <% for tag in @tags %>
+    <option value=" <%= tag.id %>"> <%= tag.type_of_purchase%> </option>
+    <% end %>
+  </select>
 
-
-    <label> Select a type of purchase </label>
-    <select name ="tag_id" >
-      <% for tag in @tags %>
-      <option value=" <%= tag.id %>"> <%= tag.type_of_purchase%> </option>
-        <% end %>
-    </select>
-
-
-
-
-    <select  hidden name ="budget_id" >
-      <% for budget in @budgets %>
+  <select  hidden name ="budget_id" >
+    <% for budget in @budgets %>
     <option value=" <%= budget.id %>"> <%= budget.budget%> </option>
-        <% end %>
-    </select>
+    <% end %>
+  </select>
 
-
-        <input  class="bttn_positive" type="submit" value="Record your transaction"/>
-
+  <input  class="bttn_positive" type="submit" value="Record your transaction"/>
 </form>

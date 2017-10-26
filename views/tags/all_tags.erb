@@ -10,16 +10,13 @@
     <h4>Tag <%= index+1 %></h4>
     <li> Type of purchase: <%= tag.type_of_purchase() %></li>
 
-
-
-<form method="post" action = "/tags/<%= tag.id%>/delete_tag">
-<input  class = "bttn_delete" type="submit"  value="Delete this type of purchase"/>
-</form>
-<form method="get" action ="/tags/<%= tag.id %>/tag_edit_form">
-<input class = "bttn_edit" type="submit"  value="Change this type of purchase"/>
-</form>
+    <form method="post" action = "/tags/<%= tag.id%>/delete_tag">
+      <input  class = "bttn_delete" type="submit"  value="Delete this type of purchase"/>
+    </form>
+    <form method="get" action ="/tags/<%= tag.id %>/tag_edit_form">
+      <input class = "bttn_edit" type="submit"  value="Change this type of purchase"/>
+    </form>
     <% end %>
-
   </ul>
 
 </p>

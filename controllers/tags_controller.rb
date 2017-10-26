@@ -11,7 +11,7 @@ end
 
 get '/tags/spent_by_tag' do
   @tags = Tag.all
-  
+
   erb(:"tags/spent_by_tag")
 end
 
@@ -40,8 +40,8 @@ post '/tags/new_tag_report' do
 end
 
 post '/tags/:id/delete_tag' do
-@tag = Tag.find(params[:id])
-@tag.delete
+  @tag = Tag.find(params[:id])
+  @tag.delete
 
   redirect "/tags/all_tags"
 end
@@ -49,7 +49,7 @@ end
 get '/tags/:id/tag_edit_form' do
   @tag = Tag.find(params[:id])
   @tags = Tag.all()
-erb(:"tags/tag_edit_form")
+  erb(:"tags/tag_edit_form")
 end
 
 post '/tags/:id/tag_edit_report' do

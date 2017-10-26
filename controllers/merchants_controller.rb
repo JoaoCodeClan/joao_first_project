@@ -41,8 +41,8 @@ post '/merchants/new_merchant_report' do
 end
 
 post '/merchants/:id/delete_merchant' do
-@merchant = Merchant.find(params[:id])
-@merchant.delete
+  @merchant = Merchant.find(params[:id])
+  @merchant.delete
 
   redirect "/merchants/all_merchants"
 end
@@ -50,7 +50,7 @@ end
 get '/merchants/:id/merchant_edit_form' do
   @merchant = Merchant.find(params[:id])
   @merchants = Merchant.all()
-erb(:"merchants/merchant_edit_form")
+  erb(:"merchants/merchant_edit_form")
 end
 
 post '/merchants/:id/merchant_edit_report' do

@@ -8,12 +8,11 @@
 
 <% elsif @total_month > @budget && @total_month > 0  %>
 <h3> You have exceeded your budget for that month </h2>
-<h3> Contact Antonio Eusebio de Abreu Goncalves URGENTLY! </h2>
+  <h3> Contact Antonio Eusebio de Abreu Goncalves URGENTLY! </h2>
 
+    <h3> Total annual expected expenses : <%= @annual %></h3>
+    <h3> Average monthly expenses : <%= @month_ave %></h3>
 
-<h3> Total annual expected expenses : <%= @annual %></h3>
-<h3> Average monthly expenses : <%= @month_ave %></h3>
-
-<% else %>
-<h2> You have no expenses for this month </h2>
-<% end %>
+    <% else %>
+    <h2> You have no expenses for this month </h2>
+    <% end %>

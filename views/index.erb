@@ -3,22 +3,20 @@
     <a id="budget_bttn" href="/budgets/budget_edit_form"> Change budget for this month</a>
   </li>
 
+  <section id="display">
+    <p id = "display_paragraph"> Your total spent so far is : £<%= @transaction %>
+      <p id = "display_paragraph"> You have available : £<%= @amount_left %>
+        <p id = "display_paragraph"> Your monthly budget is : £<%= @budget %>
+        </section>
 
+        <section id="warning">
+          <% if  @amount_left < 0 %>
+          <p id="warning1"> Your are over  your budget</p>
+          <p id="warning1"> You  should seek financial advice </p>
+          <p id="warning1"> Contact Antonio Eusebio de Abreu Goncalves for personalized loans </p>
+          <% elsif  @amount_left < (0.2 * @budget)%>
+          <p id="warning2"> Your expenses are too high</p>
+          <p id="warning2"> You now have less than 20% of this month budget</p>
 
-<section id="display">
-   <p id = "display_paragraph"> Your total spent so far is : £<%= @transaction %>
-   <p id = "display_paragraph"> You have available : £<%= @amount_left %>
-   <p id = "display_paragraph"> Your monthly budget is : £<%= @budget %>
-</section>
-
-<section id="warning">
-  <% if  @amount_left < 0 %>
-  <p id="warning1"> Your are over  your budget</p>
-  <p id="warning1"> You  should seek financial advice </p>
-  <p id="warning1"> Contact Antonio Eusebio de Abreu Goncalves for personalized loans </p>
-  <% elsif  @amount_left < (0.2 * @budget)%>
-<p id="warning2"> Your expenses are too high</p>
-<p id="warning2"> You now have less than 20% of this month budget</p>
-
-<% end %>
-</section>
+          <% end %>
+        </section>

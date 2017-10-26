@@ -2,7 +2,6 @@
 
 html {
   background-color: #d8fff8;
-
 }
 
 
@@ -11,12 +10,9 @@ html {
   display: flex;
   flex-direction: row;
   position:relative;
-
-
 }
 
 .flex-item {
-
   display: flex;
   flex-direction:row;
   width: 100%;
@@ -25,7 +21,6 @@ html {
 li {
   list-style-type: none;
   font-family: 'Oswald' arial sans-serif;
-
 }
 
 .flex-container a {
@@ -38,7 +33,6 @@ li {
 }
 
 #main_title {
-
   font-family:'Merriweather' arial sans-serif;
   font-size: 48px;
   text-align:center;
@@ -50,16 +44,13 @@ h1 {
   font-family: 'Oswald' arial sans-serif;
   font-size: 36px;
   text-align: center;
-
 }
 
 #display_paragraph{
-
   font-family: 'Oswald' arial sans-serif;
   font-size: 26px;
   text-align: center;
   margin:0px;
-
 }
 
 #display {
@@ -120,8 +111,8 @@ a  {
   border-radius: 20px;
   padding:0px 5px 5px 5px;
   font-family: 'Oswald' arial sans-serif;
-
 }
+
 .bttn_delete{
   background-color: red;
   text-decoration: none;
@@ -132,13 +123,11 @@ a  {
   border-radius: 20px;
   padding:0px 5px 5px 5px;
   font-family: 'Oswald' arial sans-serif;
-
 }
 
 form {
   margin-top: 10px;
   padding:0px 10px 2px 10px;
-
 }
 
 h3 {

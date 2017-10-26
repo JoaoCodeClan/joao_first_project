@@ -19,26 +19,20 @@ class Transaction
   def save()
     sql = " INSERT INTO transactions(amount, date_of_transaction, merchant_id, tag_id, budget_id) VALUES($1, $2, $3, $4, $5) RETURNING id"
     values = [@amount, @date_of_transaction, @merchant_id, @tag_id, @budget_id]
-
     transaction = SqlRunner.run(sql,values)
-
     @id = transaction.first['id'].to_i
-
   end
 
   def self.all()
     sql = "SELECT * FROM transactions"
     values = []
     transactions = SqlRunner.run(sql,values)
-
     return transactions.map {|transaction| Transaction.new(transaction)}
-
   end
 
   def delete()
     sql = " DELETE  FROM transactions WHERE id= $1"
     values = [@id]
-
     SqlRunner.run(sql,values)
   end
 
@@ -60,55 +54,41 @@ class Transaction
   def self.delete_all()
     sql = " DELETE FROM transactions"
     values = []
-
     SqlRunner.run(sql,values)
   end
 
   def self.find(id)
     sql = " SELECT * FROM transactions WHERE id=$1"
     values = [id]
-
     transaction_result = SqlRunner.run(sql,values)
-
     return Transaction.new(transaction_result.first)
   end
 
   def update()
     sql = " UPDATE transactions set(amount, date_of_transaction, merchant_id, tag_id, budget_id)=($1, $2, $3, $4, $5) WHERE id = $6"
     values = [@amount, @date_of_transaction, @merchant_id, @tag_id,@budget_id, @id]
-
     SqlRunner.run(sql,values)
-
   end
 
   def self.total_spent()
     sql = "SELECT SUM(amount) FROM transactions"
     values = []
     result = SqlRunner.run(sql,values)
-
-
     total_array = result.first['sum'].to_f
-
   end
 
   def self.transactions_by_tag_id(tag_id)
     sql = "SELECT * FROM transactions where tag_id= $1 "
     values = [tag_id]
-
     result_array = SqlRunner.run(sql,values)
-
     return result_array.map {|transaction| Transaction.new(transaction)}
-
   end
 
   def self.transactions_by_merchant_id(merchant_id)
     sql = "SELECT * FROM transactions where merchant_id= $1 "
     values = [merchant_id]
-
     result_array = SqlRunner.run(sql,values)
-
     return result_array.map {|transaction| Transaction.new(transaction)}
-
   end
 
   def budget()
@@ -124,9 +104,7 @@ class Transaction
     month= Date::MONTHNAMES.index(month)
     values = [month,year]
     results_array = SqlRunner.run(sql,values)
-
     return results_array.first['sum'].to_f
-
   end
 
 end

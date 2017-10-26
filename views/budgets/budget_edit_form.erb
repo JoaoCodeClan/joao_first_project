@@ -5,15 +5,13 @@
 <form method="post" action="/budgets/budget_edit_report">
   <select hidden name="id" />
   <% for budget in @budgets %>
-    <option value="<%= budget.id  %>"> <%= budget.budget %> </option>
+  <option value="<%= budget.id  %>"> <%= budget.budget %> </option>
   <% end %>
 </select>
-  <label for="budget">Budget </label>
-  <input id="budget" type="number" name="budget"/>
+<label for="budget">Budget </label>
+<input id="budget" type="number" name="budget"/>
 
 <br></br>
 
-
-        <input class="bttn_positive" type="submit" value="Change budget"/>
-
+<input class="bttn_positive" type="submit" value="Change budget"/>
 </form>
