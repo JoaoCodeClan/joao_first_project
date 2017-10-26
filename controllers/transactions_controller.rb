@@ -30,8 +30,8 @@ post '/transactions/new_transaction_report' do
 end
 
 post '/transactions/:id/delete_transaction' do
-@transaction = Transaction.find(params[:id])
-@transaction.delete
+  @transaction = Transaction.find(params[:id])
+  @transaction.delete
 
   redirect "/transactions/all_transactions"
 end
@@ -41,7 +41,7 @@ get '/transactions/:id/transaction_edit_form' do
   @merchants = Merchant.all()
   @tags = Tag.all()
   @budgets = Budget.all()
-erb(:"transactions/transaction_edit_form")
+  erb(:"transactions/transaction_edit_form")
 end
 
 post '/transactions/:id/transaction_edit_report' do
@@ -56,11 +56,11 @@ get '/transactions/spendings_by_month' do
 end
 
 post '/transactions/month_expenses_report' do
-@month= params['month']
-@year= params['year']
-@total_month = Transaction.month_expenses(@month,@year)
-@annual = @total_month * 12
-@month_ave = @annual/12
-@budget = Budget.all().first().budget().to_f
-erb(:"/transactions/month_expenses_report")
+  @month= params['month']
+  @year= params['year']
+  @total_month = Transaction.month_expenses(@month,@year)
+  @annual = @total_month * 12
+  @month_ave = @annual/12
+  @budget = Budget.all().first().budget().to_f
+  erb(:"/transactions/month_expenses_report")
 end
