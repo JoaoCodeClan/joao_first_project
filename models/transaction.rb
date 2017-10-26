@@ -120,6 +120,7 @@ class Transaction
 
   def self.month_expenses(month,year)
     sql = "SELECT SUM(amount) FROM transactions WHERE date_part('month', date_of_transaction) = $1 AND date_part('year', date_of_transaction) = $2 "
+    month= month.capitalize()
     month= Date::MONTHNAMES.index(month)
     values = [month,year]
     results_array = SqlRunner.run(sql,values)

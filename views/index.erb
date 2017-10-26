@@ -2,9 +2,9 @@
 
 
   <li>
-    <a href="/budgets/budget_edit_form"> Change budget for this month</a>
+    <a id="budget" href="/budgets/budget_edit_form"> Change budget for this month</a>
   </li>
-  
+
 <br></br>
 
 <section id="display">
@@ -17,6 +17,7 @@
   <% if  @amount_left < 0 %>
   <p id="very_bad"> Your are over  your budget</p>
   <p id="very_bad1"> You  should seek financial advice </p>
+  <p id="very_bad2"> Contact Antonio Eusebio de Abreu Goncalves for personalized loans </p>
   <% elsif  @amount_left < (0.2 * @budget)%>
 <p id="bad"> Your expenses are too high</p>
 <p id="bad1"> You now have less than 20% of this month budget</p>

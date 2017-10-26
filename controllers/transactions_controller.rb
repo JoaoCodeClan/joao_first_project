@@ -48,3 +48,15 @@ post '/transactions/:id/transaction_edit_report' do
   @transaction.update()
   redirect "/transactions/all_transactions"
 end
+
+get '/transactions/spendings_by_month' do
+
+  erb(:"/transactions/spendings_by_month")
+end
+
+post '/transactions/month_expenses_report' do
+@month= params['month']
+@year= params['year']
+@total_month = Transaction.month_expenses(@month,@year)
+erb(:"/transactions/month_expenses_report")
+end
