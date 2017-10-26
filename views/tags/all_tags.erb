@@ -1,5 +1,5 @@
-<p class="new_bttn">
-  <a href="/tags/new_tag"> Create a new purchase type </a>
+<p >
+  <a class="bttn_positive" href="/tags/new_tag"> Create a new purchase type </a>
 </p>
 
 <br></br>
@@ -10,7 +10,7 @@
     <h4>Tag <%= index+1 %></h4>
     <li> Type of purchase: <%= tag.type_of_purchase() %></li>
 
-<br></br>
+
 
 <form method="post" action = "/tags/<%= tag.id%>/delete_tag">
 <input  class = "bttn_delete" type="submit"  value="Delete this type of purchase"/>

@@ -1,13 +1,13 @@
 <h1> Change your merchant name below:</h1>
 
-<br></br>
+
 
 <form method="post" action="/merchants/<%= @merchant.id %>/merchant_edit_report">
   <label for="name"> Change merchant name to : </label>
   <input id="name" type="text" name="name" value="<%= @merchant.name%>"/>
 
 
-<br></br>
+
         <input class="bttn_positive" type="submit" value="Change merchant name"/>
 
 </form>

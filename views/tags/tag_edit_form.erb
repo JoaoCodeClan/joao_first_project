@@ -1,13 +1,13 @@
 <h1> Change your purchase type below:</h1>
 
-<br></br>
+
 
 <form method="post" action="/tags/<%= @tag.id %>/tag_edit_report">
   <label for="type_of_purchase"> Change purchase type to : </label>
   <input id="type_of_purchase" type="text" name="type_of_purchase" value="<%= @tag.type_of_purchase%>"/>
 
 
-<br></br>
+
         <input class="bttn_positive" type="submit" value="Update your purchase type"/>
 
 </form>
