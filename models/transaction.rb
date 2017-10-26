@@ -118,15 +118,14 @@ class Transaction
     return Budget.new(results.first).budget()
   end
 
-  # def self.month_expenses(month)
-  #   # sql = "SELECT SUM(amount) FROM transactions WHERE MONTHNAME()= $1  "
-  #   sql = "{ fn MONTHNAME(OrderDate) } AS MonthName, YEAR(OrderDate) AS Year, SUM(amount)
-  #   FROM transactions
-  #   values = [month]
-  #   results_array = SqlRunner.run(sql,values)
-  #
-  #   return results_array.first['sum'].to_f
-  #
-  # end
+  def self.month_expenses(month,year)
+    sql = "SELECT SUM(amount) FROM transactions WHERE date_part('month', date_of_transaction) = $1 AND date_part('year', date_of_transaction) = $2 "
+    month= Date::MONTHNAMES.index(month)
+    values = [month,year]
+    results_array = SqlRunner.run(sql,values)
+
+    return results_array.first['sum'].to_f
+
+  end
 
 end

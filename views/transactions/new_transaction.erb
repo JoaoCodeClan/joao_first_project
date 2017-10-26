@@ -31,8 +31,8 @@
 
 <br></br>
 
-    <label> Select the budget </label>
-    <select name ="budget_id" >
+    <!-- <label> Select the budget </label> -->
+    <select  hidden name ="budget_id" >
       <% for budget in @budgets %>
     <option value=" <%= budget.id %>"> <%= budget.budget%> </option>
         <% end %>

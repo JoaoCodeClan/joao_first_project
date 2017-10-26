@@ -30,8 +30,8 @@
     </select>
 
 <br></br>
-   <label> Select budget </label>
-   <select name ="budget_id" >
+   <!-- <label> Select budget </label> -->
+   <select hidden name ="budget_id" >
       <% for budget in @budgets %>
    <option <%= "selected" if budget.id == @transaction.budget_id%> value=" <%= budget.id %>"> <%= budget.budget%> </option>
     <% end %>
