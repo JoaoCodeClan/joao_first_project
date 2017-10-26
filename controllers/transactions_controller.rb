@@ -4,6 +4,7 @@ require('pry')
 require_relative('../models/tag.rb')
 require_relative('../models/transaction.rb')
 require_relative('../models/merchant.rb')
+require_relative('../models/budget.rb')
 
 
 get '/transactions' do
@@ -58,5 +59,8 @@ post '/transactions/month_expenses_report' do
 @month= params['month']
 @year= params['year']
 @total_month = Transaction.month_expenses(@month,@year)
+@annual = @total_month * 12
+@month_ave = @annual/12
+@budget = Budget.all().first().budget().to_f
 erb(:"/transactions/month_expenses_report")
 end

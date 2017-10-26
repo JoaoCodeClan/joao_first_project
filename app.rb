@@ -10,9 +10,9 @@ get '/' do
 # @amount_spent = Transaction.total_spent().to_i
 # @amount_left = 100
 # @budget = @transaction.budget.to_i
-  @budget = Budget.all().first().budget().to_i
-  @transaction = Transaction.total_spent().to_i()
-  @amount_left = (@budget -@transaction).to_i
+  @budget = Budget.all().first().budget().to_f
+  @transaction = Transaction.total_spent().to_f()
+  @amount_left = (@budget -@transaction).to_f
 
   erb(:index)
 
